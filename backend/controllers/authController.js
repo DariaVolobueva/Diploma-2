@@ -27,25 +27,26 @@ const login = async (req, res) => {
     const accessToken = jwt.sign(
         {
             ResidentInfo: {
+                residentId: foundResident.id,
                 username: foundResident.username,
                 roles: foundResident.roles,
             },
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "1m" }
+        { expiresIn: "15m" }
     );
 
     const refreshToken = jwt.sign(
         { username: foundResident.username },
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: "1d" }
+        { expiresIn: "7d" }
     );
 
     // Create secure cookie with refresh token
     res.cookie("jwt", refreshToken, {
         httpOnly: true, // accessible only by web server
         secure: false, //https
-        sameSite: "None", //cross-site cookie
+        sameSite: "Lax", //cross-site cookie
         maxAge: 7 * 24 * 60 * 60 * 1000, // cookie expiry: set to match rT
     });
 
@@ -75,7 +76,7 @@ const refresh = (req, res) => {
 
             const foundResident = await Resident.findOne({
                 username: decoded.username,
-            });
+            }).exec();
 
             if (!foundResident) {
                 return res.status(401).json({ message: "Unauthorized" });
@@ -84,12 +85,13 @@ const refresh = (req, res) => {
             const accessToken = jwt.sign(
                 {
                     ResidentInfo: {
+                        residentId: foundResident.id,
                         username: foundResident.username,
                         roles: foundResident.roles,
                     },
                 },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: "1m" }
+                { expiresIn: "15m" }
             );
 
             res.json({ accessToken });
@@ -105,7 +107,7 @@ const logout = (req, res) => {
     if (!cookies?.jwt) {
         return res.sendStatus(204); // No content
     }
-    res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: false });
+    res.clearCookie("jwt", { httpOnly: true, sameSite: "Lax", secure: false });
     res.json({ message: "Cookie cleared" });
 };
 

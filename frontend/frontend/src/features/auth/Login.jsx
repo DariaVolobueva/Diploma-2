@@ -1,9 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
 
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
+
+import usePersist from "../../hooks/usePersist";
 
 const Login = () => {
     const residentRef = useRef();
@@ -11,6 +14,7 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errMsg, setErrMsg] = useState("");
+    const [persist, setPersist] = usePersist();
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -42,7 +46,7 @@ const Login = () => {
             } else if (err.status === 400) {
                 setErrMsg("Missing Username or Password");
             } else if (err.status === 401) {
-                setErrMsg("Unauthorized");
+                setErrMsg("Невірний логін або пароль");
             } else {
                 setErrMsg(err.data?.message);
             }
@@ -52,27 +56,29 @@ const Login = () => {
 
     const handleResidentInput = (e) => setUsername(e.target.value);
     const handlePwdInput = (e) => setPassword(e.target.value);
+    const handleToggle = () => setPersist((prev) => !prev);
 
-    const errClass = errMsg ? "bg-red-500" : "";
+    const errClass = errMsg ? "bg-red-500 px-3 py-2 mb-2" : "";
 
     if (isLoading) {
         return <p>Loading...</p>;
     }
 
     const content = (
-        <section className="public">
-            <header>
-                <h1>Employee Login</h1>
-            </header>
-            <main className="login">
+        <section className="flex flex-col justify-center items-center h-screen">
+            <main className="flex flex-col justify-center items-center bg-yellow-400 py-8 px-6 rounded-xl">
                 <p ref={errRef} className={errClass} aria-live="assertive">
                     {errMsg}
                 </p>
-
-                <form className="form" onSubmit={handleSubmit}>
-                    <label htmlFor="username">Нік користувача:</label>
+                <header className="mb-4 text-3xl">
+                    <h1>Увійти</h1>
+                </header>
+                <form className="flex flex-col text-xl" onSubmit={handleSubmit}>
+                    <label htmlFor="username" className="mb-3">
+                        Логін:
+                    </label>
                     <input
-                        className="form__input"
+                        className="h-8 rounded-lg px-2 mb-3"
                         type="text"
                         id="username"
                         ref={residentRef}
@@ -82,21 +88,39 @@ const Login = () => {
                         required
                     />
 
-                    <label htmlFor="password">Пароль:</label>
+                    <label htmlFor="password" className="mb-3">
+                        Пароль:
+                    </label>
                     <input
-                        className="form__input"
+                        className="h-8 rounded-lg px-2 mb-3"
                         type="password"
                         id="password"
                         onChange={handlePwdInput}
                         value={password}
                         required
                     />
-                    <button className="form__submit-button">Увійти</button>
+                    <div className="flex flex-row items-center gap-3">
+                        <input
+                            type="checkbox"
+                            id="persist"
+                            onChange={handleToggle}
+                            checked={persist}
+                            className="w-5 h-5 accent-yellow-100"
+                        />
+                        <label htmlFor="persist">Запам'ятати мене</label>
+                    </div>
+
+                    <button className="p-5">Увійти</button>
                 </form>
+                <footer className="text-xl ">
+                    <Link
+                        to="/"
+                        className="flex flex-row gap-3 items-center justify-center"
+                    >
+                        <BiArrowBack></BiArrowBack>На головну
+                    </Link>
+                </footer>
             </main>
-            <footer>
-                <Link to="/">На головну</Link>
-            </footer>
         </section>
     );
 

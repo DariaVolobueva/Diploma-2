@@ -1,14 +1,18 @@
 import { useGetAppealsQuery } from "./appealsApiSlice";
 import AppealHead from "./AppealHead";
+import useAuth from "../../hooks/useAuth";
+import { selectResidentById } from "../residents/residentsApiSlice";
+import { useSelector } from "react-redux";
 
 const AppealsList = () => {
+    // const { username, isHead, residentId } = useAuth();
     const {
         data: appeals,
         isLoading,
         isSuccess,
         isError,
         error,
-    } = useGetAppealsQuery(undefined, {
+    } = useGetAppealsQuery("appealsList", {
         pollingInterval: 15000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true,
@@ -23,13 +27,22 @@ const AppealsList = () => {
     }
 
     if (isSuccess && appeals) {
-        const { ids } = appeals;
+        const { ids, entities } = appeals;
 
-        const tableContent = ids?.length
-            ? ids.map((appealId) => (
-                  <AppealHead key={appealId} appealId={appealId} />
-              ))
-            : null;
+        let filteredIds;
+        // if (isHead) {
+        //     filteredIds = [...ids];
+        // } else {
+        //     filteredIds = ids.filter(
+        //         (appealId) => entities[appealId].user === residentId
+        //     );
+        // }
+
+        const tableContent =
+            ids?.length &&
+            ids.map((appealId) => (
+                <AppealHead key={appealId} appealId={appealId} />
+            ));
 
         content = (
             <table className="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
