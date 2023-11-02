@@ -11,7 +11,7 @@ const ResidentsList = () => {
         isSuccess,
         isError,
         error,
-    } = useGetResidentsQuery("residentsList", {
+    } = useGetResidentsQuery(undefined, {
         pollingInterval: 60000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true,
