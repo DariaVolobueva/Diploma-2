@@ -21,6 +21,7 @@ import EditAppeal from "./features/appeals/EditAppeal";
 import NewAppeal from "./features/appeals/NewAppeal";
 import EditAppealHead from "./features/appeals/EditAppealHead";
 import Prefetch from "./features/auth/Prefetch";
+import PersistLogin from "./features/auth/PersistLogin";
 
 function App() {
     return (
@@ -65,106 +66,111 @@ function App() {
                         element={<PublicTariffs></PublicTariffs>}
                     ></Route>
                 </Route>
-            </Route>
-            <Route path="login" element={<Login></Login>}></Route>
 
-            <Route element={<Prefetch />}>
-                <Route
-                    path="personal"
-                    element={<PersonalLayout></PersonalLayout>}
-                >
-                    {/* <Route index element={<Welcome></Welcome>}></Route>  тернарный оператор в зависимости от роли пользователя*/}
-                    <Route path="residents-appeals">
+                <Route path="login" element={<Login></Login>}></Route>
+
+                <Route element={<PersistLogin></PersistLogin>}>
+                    <Route element={<Prefetch />}>
                         <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                        <Route
-                            path=":id"
-                            element={<EditAppeal></EditAppeal>}
-                        ></Route>
-                        <Route
-                            path="head/:id"
-                            element={<EditAppealHead></EditAppealHead>}
-                        ></Route>
-                        <Route
-                            path="new"
-                            element={<NewAppeal></NewAppeal>}
-                        ></Route>
-                    </Route>
-                    <Route path="residents-list">
-                        <Route
-                            index
-                            element={<ResidentsList></ResidentsList>}
-                        ></Route>
-                        <Route
-                            path=":id"
-                            element={<EditResident></EditResident>}
-                        ></Route>
-                        <Route
-                            path="new"
-                            element={<NewResidentForm></NewResidentForm>}
-                        ></Route>
-                    </Route>
-                    <Route path="add-announcement">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="add-news">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="add-voting">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="announcements">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="news">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="votings">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="write-appeal">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="my-appeals">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="accrual">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
-                    </Route>
-                    <Route path="vote">
-                        <Route
-                            index
-                            element={<AppealsList></AppealsList>}
-                        ></Route>
+                            path="personal"
+                            element={<PersonalLayout></PersonalLayout>}
+                        >
+                            {/* <Route index element={<Welcome></Welcome>}></Route>  тернарный оператор в зависимости от роли пользователя*/}
+                            <Route path="residents-appeals">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                                <Route
+                                    path=":id"
+                                    element={<EditAppeal></EditAppeal>}
+                                ></Route>
+                                <Route
+                                    path="head/:id"
+                                    element={<EditAppealHead></EditAppealHead>}
+                                ></Route>
+                                <Route
+                                    path="new"
+                                    element={<NewAppeal></NewAppeal>}
+                                ></Route>
+                            </Route>
+                            <Route path="residents-list">
+                                <Route
+                                    index
+                                    element={<ResidentsList></ResidentsList>}
+                                ></Route>
+                                <Route
+                                    path=":id"
+                                    element={<EditResident></EditResident>}
+                                ></Route>
+                                <Route
+                                    path="new"
+                                    element={
+                                        <NewResidentForm></NewResidentForm>
+                                    }
+                                ></Route>
+                            </Route>
+                            <Route path="add-announcement">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="add-news">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="add-voting">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="announcements">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="news">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="votings">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="write-appeal">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="my-appeals">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="accrual">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                            <Route path="vote">
+                                <Route
+                                    index
+                                    element={<AppealsList></AppealsList>}
+                                ></Route>
+                            </Route>
+                        </Route>
                     </Route>
                 </Route>
             </Route>

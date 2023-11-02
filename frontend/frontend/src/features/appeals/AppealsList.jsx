@@ -8,7 +8,7 @@ const AppealsList = () => {
         isSuccess,
         isError,
         error,
-    } = useGetAppealsQuery(undefined, {
+    } = useGetAppealsQuery("appealsList", {
         pollingInterval: 15000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true,

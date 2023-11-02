@@ -12,7 +12,7 @@ const login = async (req, res) => {
         return res.status(400).json({ message: "All fields are required" });
     }
 
-    const foundResident = await Resident.findOne({ username }).exec();
+    const foundResident = await Resident.findOne({ username });
 
     if (!foundResident) {
         return res.status(401).json({ message: "Unauthorized" });
@@ -45,7 +45,7 @@ const login = async (req, res) => {
     res.cookie("jwt", refreshToken, {
         httpOnly: true, // accessible only by web server
         secure: false, //https
-        sameSite: "None", //cross-site cookie
+        sameSite: "Lax", //cross-site cookie
         maxAge: 7 * 24 * 60 * 60 * 1000, // cookie expiry: set to match rT
     });
 
@@ -105,7 +105,7 @@ const logout = (req, res) => {
     if (!cookies?.jwt) {
         return res.sendStatus(204); // No content
     }
-    res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: false });
+    res.clearCookie("jwt", { httpOnly: true, sameSite: "Lax", secure: false });
     res.json({ message: "Cookie cleared" });
 };
 
