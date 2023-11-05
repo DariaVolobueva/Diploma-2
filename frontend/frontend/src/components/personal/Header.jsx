@@ -3,9 +3,11 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { useEffect } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
+import useAuth from "../../hooks/useAuth";
 
 const Header = ({ activeMenu, setActiveMenu }) => {
     const navigate = useNavigate();
+    const { username, status } = useAuth();
 
     const [sendLogout, { isLoading, isSuccess, isError, error }] =
         useSendLogoutMutation();
@@ -46,6 +48,9 @@ const Header = ({ activeMenu, setActiveMenu }) => {
                 ></GiHamburgerMenu>
             )}
             <p>Сьогодні - {today}</p>
+            <p>
+                {username} - {status}
+            </p>
             <button className="mr-3" title="Вийти" onClick={onLogoutClicked}>
                 <RiLogoutBoxRLine></RiLogoutBoxRLine>
             </button>

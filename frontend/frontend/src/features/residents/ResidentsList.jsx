@@ -1,7 +1,7 @@
 import { useGetResidentsQuery } from "./residentsApiSlice";
 import Resident from "./Resident";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ResidentsList = () => {
     const navigate = useNavigate();
@@ -67,6 +67,7 @@ const ResidentsList = () => {
     return (
         <main className="my-14 mx-6 w-full flex flex-col items-center justify-center">
             {content}
+            <Link to="/personal/residents-appeals">CLICK ME</Link>
         </main>
     );
 };
