@@ -2,7 +2,6 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "./components/personal/Layout";
 import Public from "./components/public/Public";
 import Login from "./features/auth/Login";
-import Welcome from "./features/auth/Welcome";
 import PersonalLayout from "./components/personal/PersonalLayout";
 import AppealsList from "./features/appeals/AppealsList";
 import ResidentsList from "./features/residents/ResidentsList";
@@ -27,6 +26,8 @@ import RequireAuth from "./features/auth/RequireAuth";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import { ROLES } from "./config/roles";
+import NewsList from "./features/news/NewsList";
+import EditNews from "./features/news/EditNews";
 
 function App() {
     return (
@@ -93,12 +94,6 @@ function App() {
                                     path="personal"
                                     element={<PersonalLayout></PersonalLayout>}
                                 >
-                                    {/* <Route
-                            path="welcome"
-                            index
-                            element={<Welcome></Welcome>}
-                        ></Route>{" "}
-                        тернарный оператор в зависимости от роли пользователя */}
                                     <Route
                                         element={
                                             <RequireAuth
@@ -132,6 +127,7 @@ function App() {
                                                 }
                                             ></Route>
                                         </Route>
+
                                         <Route path="residents-list">
                                             <Route
                                                 index
@@ -152,6 +148,18 @@ function App() {
                                                 }
                                             ></Route>
                                         </Route>
+
+                                        <Route path="news">
+                                            <Route
+                                                index
+                                                element={<NewsList></NewsList>}
+                                            ></Route>
+                                            <Route
+                                                path=":id"
+                                                element={<EditNews></EditNews>}
+                                            ></Route>
+                                        </Route>
+
                                         <Route path="add-announcement">
                                             <Route
                                                 index
@@ -160,14 +168,7 @@ function App() {
                                                 }
                                             ></Route>
                                         </Route>
-                                        <Route path="add-news">
-                                            <Route
-                                                index
-                                                element={
-                                                    <AppealsList></AppealsList>
-                                                }
-                                            ></Route>
-                                        </Route>
+
                                         <Route path="add-voting">
                                             <Route
                                                 index
@@ -193,7 +194,7 @@ function App() {
                                                 }
                                             ></Route>
                                         </Route>
-                                        <Route path="news">
+                                        <Route path="resnews">
                                             <Route
                                                 index
                                                 element={

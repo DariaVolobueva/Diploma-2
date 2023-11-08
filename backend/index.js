@@ -10,6 +10,7 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
+
 const PORT = process.env.PORT || 3500;
 
 console.log(process.env.NODE_ENV);
@@ -29,8 +30,28 @@ app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/root"));
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/residents", require("./routes/residentRoutes"));
-
 app.use("/appeals", require("./routes/appealRoutes"));
+app.use("/news", require("./routes/newsRoutes"));
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        // cb(null, `${__dirname}/uploads`);
+        cb(null, `../frontend/frontend/src/assets/images`);
+    },
+    filename: (req, file, cb) => {
+        console.log(file.originalname);
+        cb(null, file.fieldname + "-" + Date.now() + file.originalname);
+    },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/upload", upload.single("image"), (req, res) => {
+    console.log(req.file);
+    console.log(req.body.title);
+    console.log(req.body.text);
+});
 
 app.all("*", (req, res) => {
     res.status(404);

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-// const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const appealSchema = new mongoose.Schema(
     {
@@ -21,12 +20,6 @@ const appealSchema = new mongoose.Schema(
         timestamps: true,
     }
 );
-
-// appealSchema.plugin(AutoIncrement, {
-//     inc_field: "ticket",
-//     id: "ticketNums",
-//     start_seq: 100,
-// });
 
 module.exports = mongoose.model("Appeal", appealSchema);
 

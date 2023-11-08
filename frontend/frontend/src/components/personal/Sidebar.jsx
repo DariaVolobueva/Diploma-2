@@ -42,9 +42,9 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
                     page: "add-announcement",
                 },
                 {
-                    name: "додати новину",
+                    name: "керування новинами",
                     icon: <BsNewspaper />,
-                    page: "add-news",
+                    page: "news",
                 },
                 {
                     name: "додати голосування",
