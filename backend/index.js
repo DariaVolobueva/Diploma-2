@@ -33,25 +33,27 @@ app.use("/residents", require("./routes/residentRoutes"));
 app.use("/appeals", require("./routes/appealRoutes"));
 app.use("/news", require("./routes/newsRoutes"));
 
-const multer = require("multer");
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        // cb(null, `${__dirname}/uploads`);
-        cb(null, `../frontend/frontend/src/assets/images`);
-    },
-    filename: (req, file, cb) => {
-        console.log(file.originalname);
-        cb(null, file.fieldname + "-" + Date.now() + file.originalname);
-    },
-});
+app.use("/images", express.static("./images"));
 
-const upload = multer({ storage: storage });
+// const multer = require("multer");
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         // cb(null, `${__dirname}/uploads`);
+//         cb(null, `../frontend/frontend/src/assets/images`);
+//     },
+//     filename: (req, file, cb) => {
+//         console.log(file.originalname);
+//         cb(null, file.fieldname + "-" + Date.now() + file.originalname);
+//     },
+// });
 
-app.post("/upload", upload.single("image"), (req, res) => {
-    console.log(req.file);
-    console.log(req.body.title);
-    console.log(req.body.text);
-});
+// const upload = multer({ storage: storage });
+
+// app.post("/upload", upload.single("image"), (req, res) => {
+//     console.log(req.file);
+//     console.log(req.body.title);
+//     console.log(req.body.text);
+// });
 
 app.all("*", (req, res) => {
     res.status(404);

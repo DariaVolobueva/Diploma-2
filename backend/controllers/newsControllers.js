@@ -16,6 +16,7 @@ const getAllNews = async (req, res) => {
 // @access Private
 const createNewNews = async (req, res) => {
     const { title, text, img } = req.body;
+    console.log(req.file.path);
 
     // Confirm data
     if (!title || !text || !img) {
@@ -41,6 +42,8 @@ const createNewNews = async (req, res) => {
 // @access Private
 const updateNews = async (req, res) => {
     const { id, title, text, img } = req.body;
+    console.log(req.file, req.body);
+    console.log(req.body.title);
     // console.log(id, title, text, img);
 
     // Confirm data

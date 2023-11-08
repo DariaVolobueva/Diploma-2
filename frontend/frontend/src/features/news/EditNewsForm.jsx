@@ -64,20 +64,19 @@ const EditNewsForm = ({ news }) => {
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
 
+        // await fetch(`http://localhost:3500/news`, {
+        //     method: "PUT",
+        //     body: formData,
+        // });
+
         await axios
-            .post("http://localhost:3500/upload", formData, {
+            .post("http://localhost:3500/news", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             })
             .then((res) => {
                 console.log(`result: \n ${res}`);
             })
             .catch((err) => console.log(err));
-
-        // await axios.patchForm("http://localhost:3500/upload", {
-        //     img: image,
-        //     text: text,
-        //     title: title,
-        // });
     };
 
     const onDeleteNewsClicked = async () => {
@@ -148,7 +147,7 @@ const EditNewsForm = ({ news }) => {
                     <button
                         className="icon-button"
                         title="Delete"
-                        // onClick={onDeleteNewsClicked}
+                        onClick={onDeleteNewsClicked}
                     >
                         Delete
                     </button>
