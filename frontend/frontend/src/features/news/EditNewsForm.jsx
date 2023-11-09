@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useUpdateNewsMutation, useDeleteNewsMutation } from "./newsApiSlice";
 import { useNavigate } from "react-router-dom";
+import { selectCurrentToken } from "../auth/authSlice";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 const EditNewsForm = ({ news }) => {
@@ -11,6 +13,8 @@ const EditNewsForm = ({ news }) => {
         deleteNews,
         { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
     ] = useDeleteNewsMutation();
+
+    const token = useSelector(selectCurrentToken);
 
     const navigate = useNavigate();
     const [text, setText] = useState(news.text);
@@ -55,28 +59,40 @@ const EditNewsForm = ({ news }) => {
     const submitImage = async (e) => {
         e.preventDefault();
 
-        console.log(e.target);
+        // console.log(e.target);
+        // console.log(image);
 
-        const formData = new FormData(e.target);
-        formData.append("extra", "Extra data");
-        console.log(formData);
+        // const formData = new FormData(e.target);
+        // formData.append("extra", "Extra data");
+        // console.log(formData);
 
-        const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
+        // const formJson = Object.fromEntries(formData.entries());
+        // console.log(formJson);
 
         // await fetch(`http://localhost:3500/news`, {
         //     method: "PUT",
         //     body: formData,
         // });
+        console.log(image);
 
-        await axios
-            .post("http://localhost:3500/news", formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-            })
-            .then((res) => {
-                console.log(`result: \n ${res}`);
-            })
-            .catch((err) => console.log(err));
+        await updateNews({
+            id: news.id,
+            title,
+            text,
+            img: image,
+        });
+
+        // await axios
+        //     .post("http://localhost:3500/news", formData, {
+        //         headers: {
+        //             "Content-Type": "multipart/form-data",
+        //             Authorization: `Bearer ${token}`,
+        //         },
+        //     })
+        //     .then((res) => {
+        //         console.log(`result: \n ${res}`);
+        //     })
+        //     .catch((err) => console.log(err));
     };
 
     const onDeleteNewsClicked = async () => {

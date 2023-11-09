@@ -15,8 +15,12 @@ const getAllNews = async (req, res) => {
 // @route POST /news
 // @access Private
 const createNewNews = async (req, res) => {
-    const { title, text, img } = req.body;
-    console.log(req.file.path);
+    // const { title, text, img } = req.body;
+    const img = "../" + req.file.path.slice(21);
+    const title = req.body.title;
+    const text = req.body.text;
+
+    console.log("../" + img.slice(21));
 
     // Confirm data
     if (!title || !text || !img) {
@@ -42,9 +46,9 @@ const createNewNews = async (req, res) => {
 // @access Private
 const updateNews = async (req, res) => {
     const { id, title, text, img } = req.body;
-    console.log(req.file, req.body);
-    console.log(req.body.title);
+    // console.log(req.body.formData);
     // console.log(id, title, text, img);
+    console.log(req.file);
 
     // Confirm data
     if (!id || !title || !text || !img) {

@@ -41,12 +41,24 @@ export const newsApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: [{ type: "News", id: "LIST" }],
         }),
         updateNews: builder.mutation({
-            query: (initialNewsData) => ({
-                url: "/news",
-                method: "PATCH",
-                body: { ...initialNewsData },
-                formData: true,
-            }),
+            query: (initialNewsData) => {
+                let bodyFormData = new FormData();
+                bodyFormData.append("image", initialNewsData.img);
+                bodyFormData.append("text", initialNewsData.text);
+                bodyFormData.append("title", initialNewsData.title);
+                bodyFormData.append("id", initialNewsData.id);
+
+                console.log(initialNewsData);
+
+                const formJson = Object.fromEntries(bodyFormData.entries());
+                console.log(formJson);
+                return {
+                    url: "/news",
+                    method: "PATCH",
+                    body: { bodyFormData },
+                    formData: true,
+                };
+            },
             invalidatesTags: (result, error, arg) => [
                 { type: "News", id: arg.id },
             ],

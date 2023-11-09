@@ -12,7 +12,7 @@ const newsSchema = new mongoose.Schema(
         },
         img: {
             type: String,
-            default: "src/assets/images/logo1.png",
+            default: "../src/assets/images/logo1.png",
         },
     },
     {
