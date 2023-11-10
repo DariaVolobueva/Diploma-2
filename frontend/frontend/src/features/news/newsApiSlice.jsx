@@ -11,6 +11,7 @@ export const newsApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getNews: builder.query({
             query: () => "/news",
+            skipToken: true,
             validateStatus: (response, result) => {
                 return response.status === 200 && !result.isError;
             },
@@ -31,31 +32,30 @@ export const newsApiSlice = apiSlice.injectEndpoints({
             },
         }),
         addNewNews: builder.mutation({
-            query: (initialNewsData) => ({
-                url: "/news",
-                method: "POST",
-                body: {
-                    ...initialNewsData,
-                },
-            }),
+            query: (initialNewsData) => {
+                console.log(initialNewsData.extra);
+                const bodyFormData = new FormData(initialNewsData.extra);
+                const formJson = Object.fromEntries(bodyFormData.entries());
+                console.log(formJson);
+                return {
+                    url: "/news",
+                    method: "POST",
+                    body: bodyFormData,
+                    formData: true,
+                };
+            },
             invalidatesTags: [{ type: "News", id: "LIST" }],
         }),
         updateNews: builder.mutation({
             query: (initialNewsData) => {
-                let bodyFormData = new FormData();
-                bodyFormData.append("image", initialNewsData.img);
-                bodyFormData.append("text", initialNewsData.text);
-                bodyFormData.append("title", initialNewsData.title);
+                const bodyFormData = new FormData(initialNewsData.extra);
                 bodyFormData.append("id", initialNewsData.id);
-
-                console.log(initialNewsData);
-
                 const formJson = Object.fromEntries(bodyFormData.entries());
                 console.log(formJson);
                 return {
                     url: "/news",
                     method: "PATCH",
-                    body: { bodyFormData },
+                    body: bodyFormData,
                     formData: true,
                 };
             },

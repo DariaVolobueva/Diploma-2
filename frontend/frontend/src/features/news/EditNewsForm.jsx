@@ -14,8 +14,6 @@ const EditNewsForm = ({ news }) => {
         { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
     ] = useDeleteNewsMutation();
 
-    const token = useSelector(selectCurrentToken);
-
     const navigate = useNavigate();
     const [text, setText] = useState(news.text);
     const [title, setTitle] = useState(news.title);
@@ -35,72 +33,21 @@ const EditNewsForm = ({ news }) => {
 
     const canSave = [text, title].every(Boolean) && !isLoading;
 
-    const onSaveNewsClicked = async (e) => {
-        // const formData = new FormData();
-        // formData.append("image", image);
-        console.log(image);
-
-        if (canSave && image) {
-            await updateNews({
-                id: news.id,
-                title,
-                text,
-                img: image.name,
-            });
-        } else if (canSave) {
-            await updateNews({
-                id: news.id,
-                title,
-                text,
-            });
-        }
-    };
-
     const submitImage = async (e) => {
         e.preventDefault();
 
-        // console.log(e.target);
-        // console.log(image);
-
-        // const formData = new FormData(e.target);
-        // formData.append("extra", "Extra data");
-        // console.log(formData);
-
-        // const formJson = Object.fromEntries(formData.entries());
-        // console.log(formJson);
-
-        // await fetch(`http://localhost:3500/news`, {
-        //     method: "PUT",
-        //     body: formData,
-        // });
-        console.log(image);
-
         await updateNews({
             id: news.id,
-            title,
-            text,
-            img: image,
+            extra: e.target,
         });
-
-        // await axios
-        //     .post("http://localhost:3500/news", formData, {
-        //         headers: {
-        //             "Content-Type": "multipart/form-data",
-        //             Authorization: `Bearer ${token}`,
-        //         },
-        //     })
-        //     .then((res) => {
-        //         console.log(`result: \n ${res}`);
-        //     })
-        //     .catch((err) => console.log(err));
     };
 
     const onDeleteNewsClicked = async () => {
         await deleteNews({ id: news.id });
     };
 
-    const errClass = isError || isDelError ? "errmsg" : "offscreen";
-    const validTextClass = !text ? "form__input--incomplete" : "";
+    const errClass = isError || isDelError ? "bg-red-500" : "";
+    const validTextClass = !text ? "bg-red-500" : "";
 
     const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
@@ -109,19 +56,19 @@ const EditNewsForm = ({ news }) => {
             <p className={errClass}>{errContent}</p>
 
             <form
-                className="form"
+                className="flex flex-col justify-center"
                 onSubmit={(e) => submitImage(e)}
                 encType="multipart/form-data"
             >
-                <div className="form__title-row">
-                    <h2>Edit News</h2>
+                <div className="text-xl mb-3">
+                    <h2>Редагувати новину</h2>
                 </div>
 
-                <label className="form__label" htmlFor="news-title">
-                    Title:
+                <label className=" my-2" htmlFor="news-title">
+                    Назва:
                 </label>
                 <input
-                    className={`form__input form__input--text ${validTextClass}`}
+                    className={`${validTextClass} h-10 bg-yellow-100 rounded-lg px-4`}
                     id="news-title"
                     type="text"
                     name="title"
@@ -129,43 +76,42 @@ const EditNewsForm = ({ news }) => {
                     onChange={onTitleChanged}
                 />
 
-                <label className="form__label" htmlFor="news-text">
-                    Text:
+                <label className=" my-2" htmlFor="news-text">
+                    Tекст:
                 </label>
                 <textarea
-                    className={`form__input form__input--text ${validTextClass}`}
+                    className={`${validTextClass} h-10 bg-yellow-100 rounded-lg px-4`}
                     id="news-text"
                     name="text"
                     value={text}
                     onChange={onTextChanged}
                 />
 
-                <label className="form__label" htmlFor="news-image">
-                    Image:
+                <label className=" my-2" htmlFor="news-image">
+                    Зображення:
                 </label>
                 <input
-                    className={`form__input form__input--text ${validTextClass}`}
+                    className={`${validTextClass} h-10 bg-yellow-100 rounded-lg px-4`}
                     id="news-image"
                     type="file"
                     name="image"
                     onChange={onImageChanged}
                 />
 
-                <div className="form__action-buttons">
+                <div className="flex flex-row gap-6 mt-3">
                     <button
-                        className="icon-button"
+                        className="bg-yellow-400 p-3 rounded-md"
                         title="Save"
-                        // onClick={onSaveNewsClicked}
                         disabled={!canSave}
                     >
-                        Save
+                        Зберегти
                     </button>
                     <button
-                        className="icon-button"
+                        className="bg-yellow-400 p-3 rounded-md"
                         title="Delete"
                         onClick={onDeleteNewsClicked}
                     >
-                        Delete
+                        Видалити
                     </button>
                 </div>
             </form>

@@ -6,8 +6,12 @@ const News = require("../models/News");
 const getAllNews = async (req, res) => {
     const news = await News.find().lean();
     if (!news?.length) {
-        return res.status(400).json({ message: "No news found" });
+        return res
+            .status(400)
+            .sort({ createdAt: -1 })
+            .json({ message: "No news found" });
     }
+    console.log(news);
     res.json(news);
 };
 
@@ -15,7 +19,6 @@ const getAllNews = async (req, res) => {
 // @route POST /news
 // @access Private
 const createNewNews = async (req, res) => {
-    // const { title, text, img } = req.body;
     const img = "../" + req.file.path.slice(21);
     const title = req.body.title;
     const text = req.body.text;
@@ -45,10 +48,8 @@ const createNewNews = async (req, res) => {
 // @route PATCH /news
 // @access Private
 const updateNews = async (req, res) => {
-    const { id, title, text, img } = req.body;
-    // console.log(req.body.formData);
-    // console.log(id, title, text, img);
-    console.log(req.file);
+    const { id, title, text } = req.body;
+    const img = "../" + req.file.path.slice(21);
 
     // Confirm data
     if (!id || !title || !text || !img) {

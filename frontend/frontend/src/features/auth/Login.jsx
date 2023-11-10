@@ -6,6 +6,7 @@ import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 
 import usePersist from "../../hooks/usePersist";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
     const residentRef = useRef();
@@ -14,6 +15,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [errMsg, setErrMsg] = useState("");
     const [persist, setPersist] = usePersist();
+    const roles = useAuth();
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -38,7 +40,11 @@ const Login = () => {
             dispatch(setCredentials({ accessToken }));
             setUsername("");
             setPassword("");
-            navigate("/personal/residents-list");
+            if (roles.status === "Resident") {
+                navigate("/personal/my-appeals");
+            } else {
+                navigate("/personal/residents-list");
+            }
         } catch (err) {
             if (!err.status) {
                 setErrMsg("No Server Response");

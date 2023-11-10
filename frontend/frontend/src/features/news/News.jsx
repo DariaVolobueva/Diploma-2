@@ -13,7 +13,7 @@ const News = ({ newsId }) => {
         return (
             <tr className="border-b bg-amber-200 text-black">
                 <td className="px-6 py-4">
-                    <img src={news.img} alt="" />
+                    <img src={news.img} alt="" className="h-16" />
                 </td>
                 <td className="px-6 py-4">{news.title}</td>
                 <td className="px-6 py-4">{news.text}</td>

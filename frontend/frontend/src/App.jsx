@@ -28,6 +28,7 @@ import { Provider } from "react-redux";
 import { ROLES } from "./config/roles";
 import NewsList from "./features/news/NewsList";
 import EditNews from "./features/news/EditNews";
+import NewNewsForm from "./features/news/NewNewsForm";
 
 function App() {
     return (
@@ -157,6 +158,12 @@ function App() {
                                             <Route
                                                 path=":id"
                                                 element={<EditNews></EditNews>}
+                                            ></Route>
+                                            <Route
+                                                path="new"
+                                                element={
+                                                    <NewNewsForm></NewNewsForm>
+                                                }
                                             ></Route>
                                         </Route>
 

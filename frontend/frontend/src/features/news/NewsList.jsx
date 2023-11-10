@@ -37,7 +37,7 @@ const NewsList = () => {
             <>
                 <button
                     className="p-4 bg-yellow-400 rounded-md self-start mb-3 flex flex-row items-center gap-1"
-                    onClick={() => navigate("/personal/residents-list/new")}
+                    onClick={() => navigate("/personal/news/new")}
                 >
                     Додати новину
                     <AiOutlineFileAdd size={25}></AiOutlineFileAdd>

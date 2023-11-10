@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const PublicHeaderButton = () => {
-    const { username } = useAuth();
+    const { username, roles } = useAuth();
+    const link =
+        roles.status === "Resident"
+            ? "/personal/residents-list"
+            : "/personal/my-appeals";
     let content;
     if (username) {
         content = (
-            <Link to="/personal/residents-list">
+            <Link to={link}>
                 <button className="bg-yellow-400 text-white px-6 py-2 rounded-full font-serif">
                     ПЕРЕЙТИ ДО КАБІНЕТУ
                 </button>
