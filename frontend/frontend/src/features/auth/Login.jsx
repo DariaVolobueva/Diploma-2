@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
 
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
@@ -63,61 +64,75 @@ const Login = () => {
     const handlePwdInput = (e) => setPassword(e.target.value);
     const handleToggle = () => setPersist((prev) => !prev);
 
-    const errClass = errMsg ? "bg-red-500" : "";
+    const errClass = errMsg ? "bg-red-500 p-3" : "";
 
     if (isLoading) {
         return <p>Loading...</p>;
     }
 
     const content = (
-        <section className="public">
-            <header>
-                <h1>Employee Login</h1>
-            </header>
-            <main className="login">
-                <p ref={errRef} className={errClass} aria-live="assertive">
-                    {errMsg}
-                </p>
+        <main className="flex justify-center items-center w-screen h-screen">
+            <section className="bg-yellow-400 flex-col py-9 px-7 rounded-xl">
+                <header>
+                    <h1 className="uppercase text-2xl text-center">Увійти</h1>
+                </header>
+                <main className="flex flex-col">
+                    <p ref={errRef} className={errClass} aria-live="assertive">
+                        {errMsg}
+                    </p>
 
-                <form className="form" onSubmit={handleSubmit}>
-                    <label htmlFor="username">Нік користувача:</label>
-                    <input
-                        className="form__input"
-                        type="text"
-                        id="username"
-                        ref={residentRef}
-                        value={username}
-                        onChange={handleResidentInput}
-                        autoComplete="off"
-                        required
-                    />
-
-                    <label htmlFor="password">Пароль:</label>
-                    <input
-                        className="form__input"
-                        type="password"
-                        id="password"
-                        onChange={handlePwdInput}
-                        value={password}
-                        required
-                    />
-                    <label htmlFor="persist" className="form__persist">
+                    <form
+                        className="flex flex-col mt-5"
+                        onSubmit={handleSubmit}
+                    >
+                        <label htmlFor="username" className="text-xl mb-3">
+                            Логін:
+                        </label>
                         <input
-                            type="checkbox"
-                            className="form__checkbox"
-                            id="persist"
-                            onChange={handleToggle}
-                            checked={persist}
+                            className="bg-yellow-50 h-8 rounded-lg px-2"
+                            type="text"
+                            id="username"
+                            ref={residentRef}
+                            value={username}
+                            onChange={handleResidentInput}
+                            autoComplete="off"
+                            required
                         />
-                        Trust This Device
-                    </label>
-                    <button className="form__submit-button">Увійти</button>
-                </form>
-            </main>
-            <footer>
-                <Link to="/">На головну</Link>
-            </footer>
-        </section>
+
+                        <label htmlFor="password" className="text-xl mb-3 mt-3">
+                            Пароль:
+                        </label>
+                        <input
+                            className="bg-yellow-50 h-8 rounded-lg px-2"
+                            type="password"
+                            id="password"
+                            onChange={handlePwdInput}
+                            value={password}
+                            required
+                        />
+                        <div className="mt-3 flex flex-row gap-3 items-center">
+                            <input
+                                type="checkbox"
+                                className="accent-yellow-700 w-4 h-4"
+                                id="persist"
+                                onChange={handleToggle}
+                                checked={persist}
+                            />
+                            <label htmlFor="persist" className="text-lg">
+                                Запам'ятати мене
+                            </label>
+                        </div>
+                        <button className="text-xl uppercase my-3">
+                            Увійти
+                        </button>
+                    </form>
+                </main>
+                <footer className="flex flex-row items-center">
+                    <BiArrowBack></BiArrowBack>
+                    <Link to="/">На головну</Link>
+                </footer>
+            </section>
+        </main>
     );
 
     return content;
