@@ -1,6 +1,7 @@
 import { store } from "../../app/store";
 import { appealsApiSlice } from "../appeals/appealsApiSlice";
 import { newsApiSlice } from "../news/newsApiSlice";
+import { votesApiSlice } from "../votes/votesApiSlice";
 import { residentsApiSlice } from "../residents/residentsApiSlice";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
@@ -15,12 +16,16 @@ const Prefetch = () => {
             residentsApiSlice.endpoints.getResidents.initiate()
         );
         const news = store.dispatch(newsApiSlice.endpoints.getNews.initiate());
+        const votes = store.dispatch(
+            votesApiSlice.endpoints.getVotes.initiate()
+        );
 
         return () => {
             console.log("unsubscribing");
             appeals.unsubscribe();
             residents.unsubscribe();
             news.unsubscribe();
+            votes.unsubscribe();
         };
     }, []);
 

@@ -56,7 +56,6 @@ const AppealsList = () => {
     return (
         <main className="my-14 mx-6 w-full flex flex-col items-center justify-center">
             {content}
-            <Link to="/personal/residents-list">CLICK ME</Link>
         </main>
     );
 };

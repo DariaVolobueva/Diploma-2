@@ -32,6 +32,7 @@ app.use("/auth", require("./routes/authRoutes"));
 app.use("/residents", require("./routes/residentRoutes"));
 app.use("/appeals", require("./routes/appealRoutes"));
 app.use("/news", require("./routes/newsRoutes"));
+app.use("/votes", require("./routes/voteRoutes"));
 
 app.use("/images", express.static("./images"));
 

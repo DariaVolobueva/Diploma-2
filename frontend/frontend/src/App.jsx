@@ -19,7 +19,6 @@ import EditResident from "./features/residents/EditResident";
 import NewResidentForm from "./features/residents/NewResidentForm";
 import EditAppeal from "./features/appeals/EditAppeal";
 import NewAppeal from "./features/appeals/NewAppeal";
-import EditAppealHead from "./features/appeals/EditAppealHead";
 import Prefetch from "./features/auth/Prefetch";
 import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
@@ -29,6 +28,9 @@ import { ROLES } from "./config/roles";
 import NewsList from "./features/news/NewsList";
 import EditNews from "./features/news/EditNews";
 import NewNewsForm from "./features/news/NewNewsForm";
+import AppealsListResident from "./features/appeals/AppealsListResident";
+import VoteList from "./features/votes/VoteList";
+import NewVoteForm from "./features/votes/NewVoteForm";
 
 function App() {
     return (
@@ -116,12 +118,6 @@ function App() {
                                                 }
                                             ></Route>
                                             <Route
-                                                path="head/:id"
-                                                element={
-                                                    <EditAppealHead></EditAppealHead>
-                                                }
-                                            ></Route>
-                                            <Route
                                                 path="new"
                                                 element={
                                                     <NewAppeal></NewAppeal>
@@ -167,20 +163,15 @@ function App() {
                                             ></Route>
                                         </Route>
 
-                                        <Route path="add-announcement">
+                                        <Route path="voting">
                                             <Route
                                                 index
-                                                element={
-                                                    <AppealsList></AppealsList>
-                                                }
+                                                element={<VoteList></VoteList>}
                                             ></Route>
-                                        </Route>
-
-                                        <Route path="add-voting">
                                             <Route
-                                                index
+                                                path="new"
                                                 element={
-                                                    <AppealsList></AppealsList>
+                                                    <NewVoteForm></NewVoteForm>
                                                 }
                                             ></Route>
                                         </Route>
@@ -193,59 +184,30 @@ function App() {
                                             ></RequireAuth>
                                         }
                                     >
-                                        <Route path="announcements">
+                                        <Route path="my-voting">
                                             <Route
                                                 index
-                                                element={
-                                                    <AppealsList></AppealsList>
-                                                }
+                                                element={<VoteList></VoteList>}
                                             ></Route>
                                         </Route>
-                                        <Route path="resnews">
-                                            <Route
-                                                index
-                                                element={
-                                                    <AppealsList></AppealsList>
-                                                }
-                                            ></Route>
-                                        </Route>
-                                        <Route path="votings">
-                                            <Route
-                                                index
-                                                element={
-                                                    <AppealsList></AppealsList>
-                                                }
-                                            ></Route>
-                                        </Route>
-                                        <Route path="write-appeal">
-                                            <Route
-                                                index
-                                                element={
-                                                    <AppealsList></AppealsList>
-                                                }
-                                            ></Route>
-                                        </Route>
+
                                         <Route path="my-appeals">
                                             <Route
                                                 index
                                                 element={
-                                                    <AppealsList></AppealsList>
+                                                    <AppealsListResident></AppealsListResident>
                                                 }
                                             ></Route>
-                                        </Route>
-                                        <Route path="accrual">
                                             <Route
-                                                index
+                                                path="new"
                                                 element={
-                                                    <AppealsList></AppealsList>
+                                                    <NewAppeal></NewAppeal>
                                                 }
                                             ></Route>
-                                        </Route>
-                                        <Route path="vote">
                                             <Route
-                                                index
+                                                path=":id"
                                                 element={
-                                                    <AppealsList></AppealsList>
+                                                    <EditAppeal></EditAppeal>
                                                 }
                                             ></Route>
                                         </Route>

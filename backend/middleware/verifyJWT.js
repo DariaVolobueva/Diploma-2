@@ -15,6 +15,7 @@ const verifyJWT = (req, res, next) => {
         }
         req.user = decoded.ResidentInfo.username;
         req.roles = decoded.ResidentInfo.roles;
+        req.id = decoded.ResidentInfo.id;
         next();
     });
 };

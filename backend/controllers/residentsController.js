@@ -35,7 +35,6 @@ const createNewResidents = async (req, res) => {
         !residentSurname ||
         !currentDebt
     ) {
-        console.log(!residentName);
         return res.status(400).json({ message: "All fields are required" });
     }
 

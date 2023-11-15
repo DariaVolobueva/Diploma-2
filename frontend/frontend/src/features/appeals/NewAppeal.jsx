@@ -4,26 +4,17 @@ import {
     useGetResidentsQuery,
 } from "../residents/residentsApiSlice";
 import NewAppealForm from "./NewAppealForm";
+import useAuth from "../../hooks/useAuth";
 
 const NewAppeal = () => {
-    const {
-        data: residents,
-        isLoading,
-        isSuccess,
-        isError,
-        error,
-    } = useGetResidentsQuery(undefined, {
-        pollingInterval: 60000,
-        refetchOnFocus: true,
-        refetchOnMountOrArgChange: true,
-    });
-    if (!residents) {
+    const { id } = useAuth();
+
+    if (!id) {
         return <p className="mt-10">No permission</p>;
     }
-    // const residents = useSelector(selectAllResidents);
 
-    const content = residents ? (
-        <NewAppealForm residents={residents}></NewAppealForm>
+    const content = id ? (
+        <NewAppealForm id={id}></NewAppealForm>
     ) : (
         <p>Loading...</p>
     );

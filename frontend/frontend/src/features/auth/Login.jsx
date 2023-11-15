@@ -16,7 +16,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [errMsg, setErrMsg] = useState("");
     const [persist, setPersist] = usePersist();
-    const roles = useAuth();
+    const { roles } = useAuth();
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const Login = () => {
             dispatch(setCredentials({ accessToken }));
             setUsername("");
             setPassword("");
-            if (roles.status === "Resident") {
+            if (roles.includes("Resident")) {
                 navigate("/personal/my-appeals");
             } else {
                 navigate("/personal/residents-list");

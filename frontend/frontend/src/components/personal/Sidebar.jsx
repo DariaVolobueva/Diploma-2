@@ -49,7 +49,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
                 {
                     name: "додати голосування",
                     icon: <MdOutlineHowToVote />,
-                    page: "add-voting",
+                    page: "voting",
                 },
             ],
         },
@@ -63,7 +63,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
                     {
                         name: "написати звернення",
                         icon: <SlEnvolope />,
-                        page: "write-appeal",
+                        page: "my-appeals",
                     },
                     {
                         name: "подивитися нарахування",
@@ -73,7 +73,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
                     {
                         name: "проголосувати",
                         icon: <MdOutlineHowToVote />,
-                        page: "vote",
+                        page: "my-voting",
                     },
                 ],
             },

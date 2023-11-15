@@ -4,99 +4,65 @@ import { useAddNewAppealMutation } from "./appealsApiSlice";
 import { selectResidentById } from "./../residents/residentsApiSlice";
 import AppealsOptions from "./AppealsOptions";
 
-const NewAppealForm = ({ residents }) => {
+const NewAppealForm = ({ id }) => {
     const [addNewAppeal, { isLoading, isSuccess, isError, error }] =
         useAddNewAppealMutation();
 
     const navigate = useNavigate();
 
     const [text, setText] = useState("");
-    const [userId, setUserId] = useState(residents.ids[0]);
 
     useEffect(() => {
         if (isSuccess) {
             setText("");
-            setUserId("");
-            navigate("/personal/residents-appeals");
+            navigate("/personal/my-appeals");
         }
     }, [isSuccess, navigate]);
 
     const onTextChanged = (e) => setText(e.target.value);
-    const onUserIdChanged = (e) => setUserId(e.target.value);
 
-    const canSave = [text, userId].every(Boolean) && !isLoading;
+    const canSave = [text].every(Boolean) && !isLoading;
 
     const onSaveAppealClicked = async (e) => {
         e.preventDefault();
         if (canSave) {
-            await addNewAppeal({ user: userId, text });
+            await addNewAppeal({ user: id, text });
         }
     };
 
-    const { ids } = residents;
-    // ids?.length
-    //         ? ids.map((residentId) => (
-    //               <Resident key={residentId} residentId={residentId} />
-    //           ))
-
-    const options = ids?.length
-        ? ids.map((residentId) => (
-              <>
-                  <label htmlFor="">
-                      <AppealsOptions
-                          key={residentId}
-                          residentId={residentId}
-                      ></AppealsOptions>
-                  </label>
-                  <input
-                      name={residentId}
-                      type="radio"
-                      value={residentId}
-                      onChange={onUserIdChanged}
-                      id=""
-                  ></input>
-              </>
-          ))
-        : null;
-    console.log(options);
-
-    const errClass = isError ? "errmsg" : "offscreen";
-    const validTextClass = !text ? "form__input--incomplete" : "";
+    const errClass = isError ? "bg-red-500" : "";
+    const validTextClass = !text ? "bg-red-500" : "";
 
     const content = (
-        <main className="my-8">
+        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-serif">
             <p className={errClass}>{error?.data?.message}</p>
 
-            <form className="form" onSubmit={onSaveAppealClicked}>
-                <div className="form__title-row">
-                    <h2>New Appeal</h2>
+            <form
+                className="flex flex-col justify-center"
+                onSubmit={onSaveAppealClicked}
+            >
+                <div>
+                    <h2 className="text-xl">Нова заявка</h2>
                 </div>
 
-                <label className="form__label" htmlFor="text">
-                    Text:
+                <label className=" my-2" htmlFor="text">
+                    Текст:
                 </label>
                 <textarea
-                    className={`form__input form__input--text ${validTextClass}`}
+                    className={`${validTextClass} h-30 py-3 bg-yellow-100 rounded-lg px-4`}
                     id="text"
                     name="text"
                     value={text}
                     onChange={onTextChanged}
                 />
 
-                <label
-                    className="form__label form__checkbox-container"
-                    htmlFor="username"
-                >
-                    ASSIGNED TO:
-                </label>
-                {options}
-                <div className="form__action-buttons">
+                <div className="mt-3">
                     <button
-                        className="icon-button"
+                        className="bg-yellow-400 p-3 rounded-md"
                         title="Save"
                         disabled={!canSave}
                     >
-                        Save
+                        Відправити
                     </button>
                 </div>
             </form>
