@@ -37,7 +37,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
             title: "Робота зі сторінкою",
             links: [
                 {
-                    name: "додати оголошення",
+                    name: "керування оголошеннями",
                     icon: <SlBell />,
                     page: "add-announcement",
                 },
@@ -47,7 +47,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
                     page: "news",
                 },
                 {
-                    name: "додати голосування",
+                    name: "керування голосуваннями",
                     icon: <MdOutlineHowToVote />,
                     page: "voting",
                 },
@@ -90,7 +90,6 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
                     <div className="flex justify-between items-center ">
                         <Link
                             to="/"
-                            // onClick={handleCloseSideBar}
                             className="items-center justify-center flex "
                         >
                             <img
@@ -120,40 +119,6 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
                                 ))}
                             </div>
                         ))}
-                        {/* <Link
-                            to="/personal/residents-list"
-                            className="border-t border-b border-yellow-400"
-                        >
-                            <p className="text-black m-3 mt-4 uppercase ">
-                                Список мешканців
-                            </p>
-                        </Link>
-                        <Link
-                            to="/personal/residents-appeals"
-                            className="border-t border-b border-yellow-400"
-                        >
-                            <p className="text-black m-3 mt-4 uppercase ">
-                                звернення мешканців
-                            </p>
-                        </Link>
-                        {isHead && (
-                            <Link
-                                to="/personal/residents-appeals"
-                                className="border-t border-b border-yellow-400"
-                            >
-                                <p className="text-black m-3 mt-4 uppercase ">
-                                    Посилання для голови
-                                </p>
-                            </Link>
-                        )}
-                        <Link
-                            to="/personal/residents-appeals"
-                            className="border-t border-b border-yellow-400"
-                        >
-                            <p className="text-black m-3 mt-4 uppercase ">
-                                посилання для мешканця
-                            </p>
-                        </Link> */}
                     </div>
                 </div>
             )}

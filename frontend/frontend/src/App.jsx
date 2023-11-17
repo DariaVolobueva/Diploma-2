@@ -31,6 +31,7 @@ import NewNewsForm from "./features/news/NewNewsForm";
 import AppealsListResident from "./features/appeals/AppealsListResident";
 import VoteList from "./features/votes/VoteList";
 import NewVoteForm from "./features/votes/NewVoteForm";
+import PublicNewsFull from "./components/public/news/PublicNewsFull";
 
 function App() {
     return (
@@ -63,10 +64,16 @@ function App() {
                                 path="debtors"
                                 element={<PublicDebtors></PublicDebtors>}
                             ></Route>
-                            <Route
-                                path="news"
-                                element={<PublicNews></PublicNews>}
-                            ></Route>
+                            <Route path="news">
+                                <Route
+                                    index
+                                    element={<PublicNews></PublicNews>}
+                                ></Route>
+                                <Route
+                                    path=":id"
+                                    element={<PublicNewsFull></PublicNewsFull>}
+                                ></Route>
+                            </Route>
                             <Route
                                 path="rule"
                                 element={<PublicRule></PublicRule>}

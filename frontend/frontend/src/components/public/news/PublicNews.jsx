@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const fetchNews = async () => {
     try {
@@ -13,6 +14,7 @@ const fetchNews = async () => {
 
 const PublicNews = () => {
     const [news, setNews] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getNews = async () => {
@@ -25,7 +27,7 @@ const PublicNews = () => {
         };
 
         getNews();
-    }, []); // Запускається лише після монтування компонента
+    }, []);
 
     return (
         <main>
@@ -42,9 +44,12 @@ const PublicNews = () => {
                                 className="w-96 h-96  mr-10"
                             />
                             <div className="flex flex-col max-w-xl font-serif justify-start">
-                                <h3 className="underline pb-4 text-2xl">
+                                <Link
+                                    to={`/news/${news._id}`}
+                                    className="underline pb-4 text-2xl"
+                                >
                                     {news.title}
-                                </h3>
+                                </Link>
                                 <p className="text-lg">{news.text}</p>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const fetchNews = async () => {
     try {
@@ -42,9 +43,12 @@ const PublicMainLastNews = () => {
                                 className="w-96 h-96  mr-10"
                             />
                             <div className="flex flex-col max-w-xl font-serif">
-                                <h3 className="underline pb-4 text-2xl">
+                                <Link
+                                    to={`/news/${news._id}`}
+                                    className="underline pb-4 text-2xl"
+                                >
                                     {news.title}
-                                </h3>
+                                </Link>
                                 <p className="text-lg">{news.text}</p>
                             </div>
                         </div>
