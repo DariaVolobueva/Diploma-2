@@ -9,6 +9,9 @@ export default {
             padding: {
                 aspect: "36.81%",
             },
+            fontFamily: {
+                montserrat: ['"Montserrat"'],
+            },
         },
     },
     plugins: [],

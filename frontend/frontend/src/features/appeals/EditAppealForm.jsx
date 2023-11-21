@@ -3,7 +3,7 @@ import {
     useUpdateAppealMutation,
     useDeleteAppealMutation,
 } from "./appealsApiSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const EditAppealForm = ({ appeal, residents }) => {
@@ -170,7 +170,7 @@ const EditAppealForm = ({ appeal, residents }) => {
     }
 
     const content = (
-        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-serif">
+        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-montserrat">
             <p className={errClass}>{errContent}</p>
 
             <form
@@ -194,6 +194,13 @@ const EditAppealForm = ({ appeal, residents }) => {
                                 Зберегти
                             </button>
                             {deleteButton}
+                            <Link
+                                to=".."
+                                title="Назад"
+                                className="bg-yellow-400 p-3 rounded-md"
+                            >
+                                Назад
+                            </Link>
                         </div>
                     </div>
 

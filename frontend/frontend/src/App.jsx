@@ -32,6 +32,7 @@ import AppealsListResident from "./features/appeals/AppealsListResident";
 import VoteList from "./features/votes/VoteList";
 import NewVoteForm from "./features/votes/NewVoteForm";
 import PublicNewsFull from "./components/public/news/PublicNewsFull";
+import PublicLaws from "./components/public/laws/PublicLaws";
 
 function App() {
     return (
@@ -74,6 +75,10 @@ function App() {
                                     element={<PublicNewsFull></PublicNewsFull>}
                                 ></Route>
                             </Route>
+                            <Route
+                                path="laws"
+                                element={<PublicLaws></PublicLaws>}
+                            ></Route>
                             <Route
                                 path="rule"
                                 element={<PublicRule></PublicRule>}

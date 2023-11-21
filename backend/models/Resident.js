@@ -24,7 +24,7 @@ const residentSchema = new mongoose.Schema({
         required: true,
     },
     currentDebt: {
-        type: Number,
+        type: String,
         required: true,
     },
 });

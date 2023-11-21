@@ -11,6 +11,7 @@ const PublicHeaderItems = () => {
                 { name: "Звіти правління", link: "/report" },
                 { name: "Кошторис", link: "/estimate" },
                 { name: "Боржники", link: "/debtors" },
+                { name: "Закони про ОСББ", link: "/laws" },
             ],
         },
         {
@@ -81,7 +82,7 @@ const PublicHeaderItems = () => {
                         >
                             {link.submenu.map((submenus) => (
                                 <div key={submenus.name}>
-                                    <li className="py-4 pl-7 font-semibold md:pr-0 pr-5">
+                                    <li className="py-4 pl-7 font-montserrat md:pr-0 pr-5">
                                         <Link to={submenus.link}>
                                             {submenus.name}
                                         </Link>

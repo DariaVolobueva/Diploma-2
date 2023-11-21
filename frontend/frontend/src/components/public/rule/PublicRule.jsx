@@ -5,10 +5,10 @@ const PublicRule = () => {
         <main>
             <section>
                 <div className="flex flex-col">
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Правління
                     </div>
-                    <div className="flex flex-row flex-wrap px-28 gap-14 py-8">
+                    <div className="flex flex-row flex-wrap px-28 gap-14 py-8 font-montserrat">
                         <div className="flex flex-col justify-center items-center">
                             <img
                                 className="w-44 rounded-full"
@@ -66,10 +66,10 @@ const PublicRule = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Ревізійна комісія
                     </div>
-                    <div className="flex flex-row flex-wrap px-28 gap-14 py-8">
+                    <div className="flex flex-row flex-wrap px-28 gap-14 py-8 font-montserrat">
                         <div className="flex flex-col justify-center items-center">
                             <img
                                 className="w-44 rounded-full"
@@ -109,10 +109,10 @@ const PublicRule = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Бухгалтер
                     </div>
-                    <div className="flex flex-row flex-wrap px-28 gap-14 py-8">
+                    <div className="flex flex-row flex-wrap px-28 gap-14 py-8 font-montserrat">
                         <div className="flex flex-col justify-center items-center">
                             <img
                                 className="w-44 rounded-full"

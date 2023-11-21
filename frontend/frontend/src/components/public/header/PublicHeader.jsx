@@ -9,13 +9,15 @@ const PublicHeader = () => {
     const [open, setOpen] = useState(false);
     return (
         <nav className="bg-white sticky top-0 z-10">
-            <div className="flex items-center font-medium justify-around ">
-                <div className="z-50 md:w-auto w-full flex justify-between">
-                    <img
-                        src={logo}
-                        alt="logo"
-                        className="md:cursor-pointer h-24"
-                    />
+            <div className="flex items-center font-montserrat justify-around bg-white">
+                <div className="z-50 md:w-auto w-full flex justify-between bg-white">
+                    <Link to="/">
+                        <img
+                            src={logo}
+                            alt="logo"
+                            className="md:cursor-pointer h-24"
+                        />
+                    </Link>
                     <div
                         className="text-3xl md:hidden self-center p-3"
                         onClick={() => setOpen(!open)}
@@ -27,7 +29,7 @@ const PublicHeader = () => {
                         )}
                     </div>
                 </div>
-                <ul className="md:flex hidden uppercase items-center gap-8 font-serif">
+                <ul className="md:flex hidden uppercase items-center gap-8 font-montserrat">
                     <li>
                         <Link to="/" className="py-7 px-3 inline-block">
                             Головна
@@ -36,7 +38,7 @@ const PublicHeader = () => {
                     <PublicHeaderItems></PublicHeaderItems>
                     <li>
                         <Link to="/contacts" className="py-7 px-3 inline-block">
-                            Контакти
+                            Контакти КП
                         </Link>
                     </li>
                 </ul>
@@ -57,7 +59,7 @@ const PublicHeader = () => {
                     <PublicHeaderItems></PublicHeaderItems>
                     <li>
                         <Link to="/contact" className="py-7 px-3 inline-block">
-                            Контакти
+                            Контакти КП
                         </Link>
                     </li>
                     <div className="py-5">

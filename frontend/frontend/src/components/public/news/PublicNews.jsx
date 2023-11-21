@@ -31,7 +31,7 @@ const PublicNews = () => {
 
     return (
         <main>
-            <div className="flex flex-col items-center px-96">
+            <div className="flex flex-col items-center lg:px-96 px-2">
                 {news.map((news) => (
                     <>
                         <div
@@ -43,7 +43,7 @@ const PublicNews = () => {
                                 alt=""
                                 className="w-96 h-96  mr-10"
                             />
-                            <div className="flex flex-col max-w-xl font-serif justify-start">
+                            <div className="flex flex-col max-w-xl font-montserrat justify-start">
                                 <Link
                                     to={`/news/${news._id}`}
                                     className="underline pb-4 text-2xl"

@@ -57,7 +57,7 @@ const VoteList = () => {
         content = <p>Вітаємо! Votes на даний час немає</p>;
     }
 
-    return <main className="my-14 mx-6 w-full ">{content}</main>;
+    return <main className="my-14 mx-6 w-full font-montserrat">{content}</main>;
 };
 
 export default VoteList;

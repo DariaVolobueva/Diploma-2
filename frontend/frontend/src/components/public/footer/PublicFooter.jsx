@@ -1,17 +1,17 @@
 const PublicFooter = () => {
     return (
-        <footer className="bg-yellow-400 flex flex-row justify-around py-10 font-serif text-sm flex-wrap">
+        <footer className="bg-yellow-400 flex flex-row justify-around py-10 font-montserrat text-sm flex-wrap">
             <section>
                 <div className="pb-6 uppercase">Інформація</div>
                 <div>
                     <div className="pb-6">
-                        <p>ОСББ «УРЛІВСЬКА 20»</p>
-                        <p>ЄДРПОУ 42565457</p>
-                        <p>02081, м.Київ, вул. Урлівська, 20</p>
+                        <p>ОСББ «ЗАХІДНОДОНБАСЬКА, 43»</p>
+                        <p>ЄДРПОУ 40483577</p>
+                        <p>51409, м.Павлоград, вул. Західнодонбаська, 43</p>
                     </div>
                     <div className="pb-6">
                         <p>Реквізити</p>
-                        <p>IBAN UA173052990000026002026218833</p>
+                        <p>IBAN UA233052990000026006050278469</p>
                         <p>МФО 305299</p>
                         <p>АТ КБ «ПРИВАТБАНК»</p>
                     </div>
@@ -20,20 +20,24 @@ const PublicFooter = () => {
             <section>
                 <div className="pb-6 uppercase">КОНТАКТИ</div>
                 <div>
-                    <div className="pb-6">
-                        <p>Голова правління ОСББ "УРЛІВСЬКА 20"</p>
-                        <p>Денисенко Інна Валентинівна </p>
-                        <p>+380 (63) 843 43 89 (прийом за телефоном) </p>
+                    <div className="pb-6 flex flex-col">
+                        <a>Голова правління ОСББ «ЗАХІДНОДОНБАСЬКА, 43»</a>
+                        <a>Волобуєва Тетяна Володимирівна</a>
+                        <a href="tel:+380669167540">
+                            +380 (66) 916 75 40 (прийом за телефоном){" "}
+                        </a>
                     </div>
-                    <div className="pb-6">
-                        <p>Бухгалтер</p>
-                        <p>Кравченко Ірина Миколаївна</p>
-                        <p>+380 (67) 255-32 72 (прийом за телефоном)</p>
+                    <div className="pb-6 flex flex-col">
+                        <a>Бухгалтер</a>
+                        <a>Карпова Надія Іосифівна</a>
+                        <a href="tel:+380991151169">
+                            +380 (99) 115-11 69 (прийом за телефоном)
+                        </a>
                     </div>
-                    <div className="pb-6">
-                        <p>Сантехніка/електрика</p>
-                        <p>Кравченко Ірина Миколаївна</p>
-                        <p>+380 (67) 359 51 95</p>
+                    <div className="pb-6 flex flex-col">
+                        <a>Сантехніка/електрика</a>
+                        <a>Волобуєв Михайло Іларионович</a>
+                        <a href="tel:+380661832636">+380 (66) 183 26 36</a>
                     </div>
                 </div>
             </section>

@@ -71,7 +71,7 @@ const Login = () => {
     }
 
     const content = (
-        <main className="flex justify-center items-center w-screen h-screen">
+        <main className="flex justify-center items-center w-screen h-screen font-montserrat">
             <section className="bg-yellow-400 flex-col py-9 px-7 rounded-xl">
                 <header>
                     <h1 className="uppercase text-2xl text-center">Увійти</h1>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAddNewResidentMutation } from "./residentsApiSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const USER_REGEX = /^[a-zA-Z]{2,20}\d{3,4}$/;
 
@@ -62,7 +62,7 @@ const NewResidentForm = () => {
     const validResidentClass = !validUsername ? "bg-red-500" : "";
 
     const content = (
-        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-serif">
+        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-montserrat">
             <p className={errClass}>{error?.data?.message}</p>
 
             <form
@@ -133,6 +133,13 @@ const NewResidentForm = () => {
                     >
                         Зберегти
                     </button>
+                    <Link
+                        to=".."
+                        title="Назад"
+                        className="bg-yellow-400 p-3 rounded-md"
+                    >
+                        Назад
+                    </Link>
                 </div>
             </form>
         </main>

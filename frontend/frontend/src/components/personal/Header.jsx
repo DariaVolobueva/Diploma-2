@@ -7,7 +7,8 @@ import useAuth from "../../hooks/useAuth";
 
 const Header = ({ activeMenu, setActiveMenu }) => {
     const navigate = useNavigate();
-    const { username, status } = useAuth();
+    let { username, status } = useAuth();
+    status = status === "Head" ? "Голова" : "Мешканець";
 
     const [sendLogout, { isLoading, isSuccess, isError, error }] =
         useSendLogoutMutation();
@@ -33,7 +34,7 @@ const Header = ({ activeMenu, setActiveMenu }) => {
         .toUpperCase();
 
     const content = (
-        <header className="bg-yellow-400 fixed w-full h-11 flex flex-row items-center justify-between">
+        <header className="bg-yellow-400 fixed w-full h-11 flex flex-row items-center justify-between font-montserrat">
             {activeMenu ? (
                 <GiCancel
                     size={20}

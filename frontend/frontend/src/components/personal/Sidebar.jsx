@@ -86,7 +86,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
     return (
         <>
             {activeMenu && (
-                <div className=" h-screen overflow-hidden scroll-smooth  md:hover:overflow-auto pb-10 bg-amber-300 border-r-2 border-amber-400">
+                <div className=" h-screen overflow-hidden scroll-smooth  md:hover:overflow-auto pb-10 bg-amber-300 border-r-2 border-amber-400 font-montserrat">
                     <div className="flex justify-between items-center ">
                         <Link
                             to="/"

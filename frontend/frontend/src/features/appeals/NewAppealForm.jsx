@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAddNewAppealMutation } from "./appealsApiSlice";
 import { selectResidentById } from "./../residents/residentsApiSlice";
 import AppealsOptions from "./AppealsOptions";
@@ -34,7 +34,7 @@ const NewAppealForm = ({ id }) => {
     const validTextClass = !text ? "bg-red-500" : "";
 
     const content = (
-        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-serif">
+        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-montserrat">
             <p className={errClass}>{error?.data?.message}</p>
 
             <form
@@ -56,7 +56,7 @@ const NewAppealForm = ({ id }) => {
                     onChange={onTextChanged}
                 />
 
-                <div className="mt-3">
+                <div className="mt-3 flex flex-row gap-2">
                     <button
                         className="bg-yellow-400 p-3 rounded-md"
                         title="Save"
@@ -64,6 +64,13 @@ const NewAppealForm = ({ id }) => {
                     >
                         Відправити
                     </button>
+                    <Link
+                        to=".."
+                        title="Назад"
+                        className="bg-yellow-400 p-3 rounded-md"
+                    >
+                        Назад
+                    </Link>
                 </div>
             </form>
         </main>

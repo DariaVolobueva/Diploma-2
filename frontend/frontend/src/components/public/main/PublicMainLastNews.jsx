@@ -30,19 +30,19 @@ const PublicMainLastNews = () => {
 
     return (
         <section>
-            <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+            <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                 Останні новини
             </div>
-            <div className="flex flex-col items-center px-96">
+            <div className="flex flex-col items-center lg:px-96 px-2">
                 {news.slice(0, 3).map((news) => (
                     <>
-                        <div className="flex flex-row items-center w-full my-10">
+                        <div className="flex flex-row items-center w-full lg:my-10 my-0">
                             <img
                                 src={news.img}
                                 alt=""
-                                className="w-96 h-96  mr-10"
+                                className="w-96 h-96 mr-10 my-4"
                             />
-                            <div className="flex flex-col max-w-xl font-serif">
+                            <div className="flex flex-col lg:max-w-xl w-full font-montserrat">
                                 <Link
                                     to={`/news/${news._id}`}
                                     className="underline pb-4 text-2xl"

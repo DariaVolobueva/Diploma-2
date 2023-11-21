@@ -3,7 +3,7 @@ const PublicTariffs = () => {
         <main>
             <section>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Вода
                     </div>
                     <table className="table-fixed border-black border-4">
@@ -49,7 +49,7 @@ const PublicTariffs = () => {
                     </table>
                 </div>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Газ
                     </div>
                     <table className="table-fixed border-black border-4">
@@ -95,7 +95,7 @@ const PublicTariffs = () => {
                     </table>
                 </div>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Світло
                     </div>
                     <table className="table-fixed border-black border-4">
@@ -141,7 +141,7 @@ const PublicTariffs = () => {
                     </table>
                 </div>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Сміття
                     </div>
                     <table className="table-fixed border-black border-4">
@@ -187,7 +187,7 @@ const PublicTariffs = () => {
                     </table>
                 </div>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         ОСББ
                     </div>
                     <table className="table-fixed border-black border-4">
@@ -233,7 +233,7 @@ const PublicTariffs = () => {
                     </table>
                 </div>
                 <div>
-                    <div className="bg-yellow-400 py-8 uppercase font-serif px-28 text-3xl">
+                    <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
                         Домофон
                     </div>
                     <table className="table-fixed border-black border-4">

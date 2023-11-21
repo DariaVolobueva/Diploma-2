@@ -3,7 +3,7 @@ import {
     useUpdateResidentMutation,
     useDeleteResidentMutation,
 } from "./residentsApiSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const USER_REGEX = /^[a-zA-Z]{2,20}\d{3,4}$/;
 
@@ -72,7 +72,7 @@ const EditResidentForm = ({ resident }) => {
     const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
     const content = (
-        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-serif">
+        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-montserrat">
             <p className={errClass}>{errContent}</p>
 
             <form
@@ -150,6 +150,13 @@ const EditResidentForm = ({ resident }) => {
                     >
                         Видалити
                     </button>
+                    <Link
+                        to=".."
+                        title="Назад"
+                        className="bg-yellow-400 p-3 rounded-md"
+                    >
+                        Назад
+                    </Link>
                 </div>
             </form>
         </main>

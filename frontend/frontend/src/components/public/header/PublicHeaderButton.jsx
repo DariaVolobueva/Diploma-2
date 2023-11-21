@@ -11,7 +11,7 @@ const PublicHeaderButton = () => {
     if (username) {
         content = (
             <Link to={link}>
-                <button className="bg-yellow-400 text-white px-6 py-2 rounded-full font-serif">
+                <button className="bg-yellow-400 text-white px-6 py-2 rounded-full font-montserrat">
                     ПЕРЕЙТИ ДО КАБІНЕТУ
                 </button>
             </Link>
@@ -19,7 +19,7 @@ const PublicHeaderButton = () => {
     } else {
         content = (
             <Link to="/login">
-                <button className="bg-yellow-400 text-white px-6 py-2 rounded-full font-serif">
+                <button className="bg-yellow-400 text-white px-6 py-2 rounded-full font-montserrat">
                     ВХІД
                 </button>
             </Link>

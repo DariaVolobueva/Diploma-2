@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useUpdateNewsMutation, useDeleteNewsMutation } from "./newsApiSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { selectCurrentToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -52,7 +52,7 @@ const EditNewsForm = ({ news }) => {
     const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
     const content = (
-        <main className="my-14 w-full flex flex-col items-center justify-center">
+        <main className="my-14 w-full flex flex-col items-center justify-center font-montserrat">
             <p className={errClass}>{errContent}</p>
 
             <form
@@ -113,6 +113,13 @@ const EditNewsForm = ({ news }) => {
                     >
                         Видалити
                     </button>
+                    <Link
+                        to=".."
+                        title="Назад"
+                        className="bg-yellow-400 p-3 rounded-md"
+                    >
+                        Назад
+                    </Link>
                 </div>
             </form>
         </main>

@@ -64,7 +64,7 @@ const NewsList = () => {
     }
 
     return (
-        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center">
+        <main className="my-14 mx-6 w-full flex flex-col items-center justify-center font-montserrat">
             {content}
         </main>
     );

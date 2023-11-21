@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAddNewNewsMutation } from "./newsApiSlice";
 
 const NewNewsForm = () => {
@@ -38,7 +38,7 @@ const NewNewsForm = () => {
     const validTextClass = !text ? "bg-red-500" : "";
 
     const content = (
-        <main className="my-14 w-full flex flex-col items-center justify-center">
+        <main className="my-14 w-full flex flex-col items-center justify-center font-montserrat">
             <p className={errClass}>{error?.data?.message}</p>
 
             <form
@@ -86,8 +86,15 @@ const NewNewsForm = () => {
                         title="Save"
                         disabled={!canSave}
                     >
-                        Save
+                        Зберегти
                     </button>
+                    <Link
+                        to=".."
+                        title="Назад"
+                        className="bg-yellow-400 p-3 rounded-md"
+                    >
+                        Назад
+                    </Link>
                 </div>
             </form>
         </main>
