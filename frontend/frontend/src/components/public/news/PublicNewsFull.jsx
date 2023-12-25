@@ -45,10 +45,10 @@ const PublicNewsFull = () => {
                         className="w-96 h-96  mr-10"
                     />
                     <div className="flex flex-col max-w-full font-montserrat justify-center items-center">
-                        <h3 className="underline pb-4 text-2xl">
+                        <h3 className="underline pb-4 text-2xl uppercase">
                             {newsFull.title}
                         </h3>
-                        <p className="text-lg my-6">{newsFull.text}</p>
+                        <p className="text-lg my-6 px-6">{newsFull.text}</p>
                     </div>
                 </>
             )}

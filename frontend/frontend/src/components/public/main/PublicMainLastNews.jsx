@@ -28,6 +28,8 @@ const PublicMainLastNews = () => {
         getNews();
     }, []);
 
+    news.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
+
     return (
         <section>
             <div className="bg-yellow-400 py-8 uppercase font-montserrat px-28 text-3xl">
@@ -47,7 +49,7 @@ const PublicMainLastNews = () => {
                                     to={`/news/${news._id}`}
                                     className="underline pb-4 text-2xl"
                                 >
-                                    {news.title}
+                                    <p className="uppercase">{news.title}</p>
                                 </Link>
                                 <p className="text-lg">{news.text}</p>
                             </div>

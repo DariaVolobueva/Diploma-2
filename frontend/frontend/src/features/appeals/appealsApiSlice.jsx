@@ -2,7 +2,7 @@ import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice";
 
 const appealsAdapter = createEntityAdapter({
-    sortComparer: (a, b) => (a.progress > b.progress ? -1 : 1),
+    sortComparer: (a, b) => (a.status > b.status ? -1 : 1),
 });
 
 const initialState = appealsAdapter.getInitialState();

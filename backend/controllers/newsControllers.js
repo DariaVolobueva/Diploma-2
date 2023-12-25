@@ -11,7 +11,7 @@ const getAllNews = async (req, res) => {
             .sort({ createdAt: -1 })
             .json({ message: "No news found" });
     }
-    console.log(news);
+
     res.json(news);
 };
 
@@ -23,8 +23,6 @@ const createNewNews = async (req, res) => {
     const title = req.body.title;
     const text = req.body.text;
 
-    console.log("../" + img.slice(21));
-
     // Confirm data
     if (!title || !text || !img) {
         return res.status(400).json({ message: "All fields are required" });
@@ -34,7 +32,6 @@ const createNewNews = async (req, res) => {
 
     // Create and store new resident
     const news = await News.create(newObject);
-    console.log(news);
 
     if (news) {
         // created

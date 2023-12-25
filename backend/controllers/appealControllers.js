@@ -5,6 +5,7 @@ const Appeal = require("../models/Appeal");
 // @access Private
 const getAllAppeals = async (req, res) => {
     const appeals = await Appeal.find().lean();
+
     if (!appeals?.length) {
         return res.status(400).json({ message: "No appeals found" });
     }
@@ -26,7 +27,6 @@ const createNewAppeal = async (req, res) => {
 
     // Create and store new resident
     const appeal = await Appeal.create(appealObject);
-    console.log(appeal);
 
     if (appeal) {
         // created
@@ -44,7 +44,6 @@ const updateAppeals = async (req, res) => {
 
     // Confirm data
     if (!id || !user || !text || !status) {
-        console.log(!status);
         return res.status(400).json({ message: "All fields are required" });
     }
 

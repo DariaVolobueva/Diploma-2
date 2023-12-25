@@ -33,6 +33,7 @@ import VoteList from "./features/votes/VoteList";
 import NewVoteForm from "./features/votes/NewVoteForm";
 import PublicNewsFull from "./components/public/news/PublicNewsFull";
 import PublicLaws from "./components/public/laws/PublicLaws";
+import AccrualList from "./features/accruals/AccrualList";
 
 function App() {
     return (
@@ -196,6 +197,15 @@ function App() {
                                             ></RequireAuth>
                                         }
                                     >
+                                        <Route path="accrual">
+                                            <Route
+                                                index
+                                                element={
+                                                    <AccrualList></AccrualList>
+                                                }
+                                            ></Route>
+                                        </Route>
+
                                         <Route path="my-voting">
                                             <Route
                                                 index

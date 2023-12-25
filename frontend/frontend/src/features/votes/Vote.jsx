@@ -94,13 +94,16 @@ const Vote = ({ voteId }) => {
                 )}
 
                 {roles.includes("Head") && (
-                    <div>
-                        {vote.voters.map((resident) => (
-                            <VoteResidentInfo
-                                id={resident._id}
-                            ></VoteResidentInfo>
-                        ))}
-                    </div>
+                    <>
+                        <div className="bg-black w-full h-1 self-center my-1"></div>
+                        <div>
+                            {vote.voters.map((resident) => (
+                                <VoteResidentInfo
+                                    id={resident._id}
+                                ></VoteResidentInfo>
+                            ))}
+                        </div>
+                    </>
                 )}
 
                 {roles.includes("Head") && (
